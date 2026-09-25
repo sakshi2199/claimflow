@@ -1,0 +1,15 @@
+{
+  "policy_id": "POL-PREV-001",
+  "title": "Annual Preventive Examination",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-110"
+  ],
+  "diagnosis_prefixes": [
+    "Z"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-01-01",
+  "text": "The annual preventive examination (PRC-110) is covered once per calendar year for adult members and must be billed with a preventive or screening diagnosis in the Z category. The visit should document an age-appropriate history, a physical examination, and any counselling or screening that was ordered.\n\nA preventive examination without acute complaints is expected, and documentation of no acute complaints is normal for this service and does not need additional review. If a significant new problem is addressed and treated, a separate problem-oriented visit should be billed."
+}

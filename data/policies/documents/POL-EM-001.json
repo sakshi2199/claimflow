@@ -1,0 +1,25 @@
+{
+  "policy_id": "POL-EM-001",
+  "title": "Office Visit (Evaluation and Management) Coverage",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-101",
+    "PRC-102"
+  ],
+  "diagnosis_prefixes": [
+    "J",
+    "R",
+    "K",
+    "M",
+    "L",
+    "Z",
+    "E",
+    "I",
+    "N",
+    "S"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-01-01",
+  "text": "Northwind Health Plan covers office visits at low complexity (PRC-101) and moderate complexity (PRC-102) for new and established patients. A covered visit requires a documented reason for the visit, a clinician assessment, and a plan of care. Low complexity visits address a single minor or self-limited problem. Moderate complexity visits address one or more chronic conditions, or an acute problem that needs prescription management.\n\nVisit claims are eligible for automatic approval when the documentation is definitive, the diagnosis is consistent with the reported symptoms, and the amount is within the auto-approval limit. Repeat visits by the same patient to the same provider are payable when they occur on different dates of service."
+}

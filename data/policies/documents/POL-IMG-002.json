@@ -1,0 +1,16 @@
+{
+  "policy_id": "POL-IMG-002",
+  "title": "Advanced Imaging: Knee MRI Without Contrast",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-160"
+  ],
+  "diagnosis_prefixes": [
+    "M",
+    "S"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-03-01",
+  "text": "Knee MRI without contrast (PRC-160) is covered for members with musculoskeletal or injury diagnoses affecting the knee, when conservative measures have been documented or a traumatic injury is present. Notes should describe the symptoms such as pain, swelling or instability, the functional limitation, and why imaging will change management.\n\nAdvanced imaging billed with a diagnosis unrelated to the musculoskeletal system is not payable. The auto-approval limit for this procedure is applied to each claim."
+}

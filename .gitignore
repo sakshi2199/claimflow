@@ -26,3 +26,6 @@ dist/
 .vscode/
 .idea/
 .DS_Store
+
+# Local vector store (rebuild with: python -m app.rag.ingest)
+chroma_db/

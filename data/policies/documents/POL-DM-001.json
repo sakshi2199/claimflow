@@ -1,0 +1,15 @@
+{
+  "policy_id": "POL-DM-001",
+  "title": "Diabetes Self-Management Education",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-190"
+  ],
+  "diagnosis_prefixes": [
+    "E"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-05-01",
+  "text": "Diabetes self-management education sessions (PRC-190) are covered for members with diabetes or related endocrine and metabolic conditions. Notes should identify the topics that were taught, such as glucose monitoring, nutrition, or medication use, and the patient's understanding of them.\n\nThe service must be billed with an endocrine diagnosis in the E category."
+}

@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-PRV-001",
+  "title": "Provider Review Requirements",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "provider_review",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-01-01",
+  "text": "Providers placed on the review watchlist have every claim reviewed manually, regardless of documentation quality, until the compliance team removes the provider from the list. Watchlist status is determined only from the provider identifier and never from the content of the clinical notes."
+}

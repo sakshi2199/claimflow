@@ -114,7 +114,12 @@ def _check_ambiguous_notes(claim: Claim) -> Decision | None:
     return None
 
 
-def evaluate_business_rules(claim: Claim, policies: PolicyData, duplicate_of_id: int | None) -> Decision:
+def evaluate_deterministic_rules(claim: Claim, policies: PolicyData, duplicate_of_id: int | None) -> Decision | None:
+    """Every rule that decides a claim without interpreting the meaning of its notes.
+
+    Returns None when none fires: the claim is structurally fine and only the notes' meaning is left to judge.
+    Phase 1 judges that with a keyword list; Phase 2 hands it to retrieval + LLM.
+    """
     procedure = policies.procedures.get((claim.procedure_code or "").strip())
     return (
         _check_duplicate(duplicate_of_id)
@@ -124,10 +129,18 @@ def evaluate_business_rules(claim: Claim, policies: PolicyData, duplicate_of_id:
         or _check_provider_watchlist(claim, policies)
         or _check_high_cost(claim, procedure)
         or _check_supporting_info(claim)
-        or _check_ambiguous_notes(claim)
-        or approve(
-            ReasonCode.VALID_STANDARD_CLAIM,
-            "default_approve",
-            "Claim passed all validation and business rules.",
-        )
     )
+
+
+def keyword_notes_decision(claim: Claim) -> Decision:
+    """Phase 1 notes judgement: keyword ambiguity check, otherwise approve."""
+    return _check_ambiguous_notes(claim) or approve(
+        ReasonCode.VALID_STANDARD_CLAIM,
+        "default_approve",
+        "Claim passed all validation and business rules.",
+    )
+
+
+def evaluate_business_rules(claim: Claim, policies: PolicyData, duplicate_of_id: int | None) -> Decision:
+    """The complete Phase 1 rule chain (unchanged behaviour)."""
+    return evaluate_deterministic_rules(claim, policies, duplicate_of_id) or keyword_notes_decision(claim)

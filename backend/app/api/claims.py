@@ -7,9 +7,19 @@ from app.db.session import get_db
 from app.models.claim import Claim
 from app.models.enums import ClaimOutcome, ProcessingStatus
 from app.schemas.claim import ClaimCreate, ClaimDetail, ClaimRead, ProcessResponse, WorkflowRunRead
+from app.services.interpretation import NotesInterpreter, get_default_interpreter
+from app.services.llm.base import LLMConfigError
 from app.services.workflow import PROCESSABLE_STATES, process_claim
 
 router = APIRouter(prefix="/claims", tags=["claims"])
+
+
+def interpreter_dependency() -> NotesInterpreter | None:
+    """The Phase 2 interpreter, or None when no LLM is configured (then claims use the Phase 1 rules only)."""
+    try:
+        return get_default_interpreter()
+    except LLMConfigError as exc:
+        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail=f"LLM misconfigured: {exc}") from exc
 
 
 def _get_claim_or_404(db: Session, claim_id: int) -> Claim:
@@ -65,12 +75,16 @@ def get_claim(claim_id: int, db: Session = Depends(get_db)) -> ClaimDetail:
 
 
 @router.post("/{claim_id}/process", response_model=ProcessResponse)
-def process(claim_id: int, db: Session = Depends(get_db)) -> ProcessResponse:
+def process(
+    claim_id: int,
+    db: Session = Depends(get_db),
+    interpreter: NotesInterpreter | None = Depends(interpreter_dependency),
+) -> ProcessResponse:
     claim = _get_claim_or_404(db, claim_id)
     if claim.processing_status not in PROCESSABLE_STATES:
         raise HTTPException(
             status.HTTP_409_CONFLICT,
             detail=f"Claim {claim_id} is already {claim.processing_status.value}; only RECEIVED or FAILED claims can be processed",
         )
-    run = process_claim(db, claim)
+    run = process_claim(db, claim, interpreter)
     return ProcessResponse(claim=ClaimRead.model_validate(claim), workflow_run=WorkflowRunRead.model_validate(run))

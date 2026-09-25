@@ -1,0 +1,20 @@
+{
+  "policy_id": "POL-LAB-001",
+  "title": "Laboratory Panels: Metabolic and Lipid",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-130",
+    "PRC-140"
+  ],
+  "diagnosis_prefixes": [
+    "E",
+    "K",
+    "N",
+    "I",
+    "Z"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-02-01",
+  "text": "The comprehensive metabolic panel (PRC-130) and the lipid panel (PRC-140) are covered for monitoring chronic conditions, for screening, and for evaluation of symptoms. Notes must state why the panel was ordered, for example monitoring of diabetes, blood pressure or cholesterol, or routine screening, and that the clinician reviewed the results.\n\nPanels are low cost and are normally approved automatically when the reason for ordering is documented. Frequency limits apply: a panel repeated within a short interval needs a documented clinical reason."
+}

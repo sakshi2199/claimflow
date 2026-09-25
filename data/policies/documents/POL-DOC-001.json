@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-DOC-001",
+  "title": "Minimum Clinical Documentation Standards",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "documentation",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-01-01",
+  "text": "To be paid, the clinical notes on a claim must contain four elements: the reason for the encounter or the patient's presenting problem; the clinician's assessment, including the diagnosis being addressed; the service that was performed; and a plan or follow-up instruction.\n\nNotes that contain all four elements and are consistent with the coded diagnosis and the billed procedure are considered sufficient. Notes are read as a whole. Sufficient documentation supports routine approval of a claim that passes all other checks. Additional documentation may be requested when any element is missing."
+}

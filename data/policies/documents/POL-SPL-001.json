@@ -1,0 +1,18 @@
+{
+  "policy_id": "POL-SPL-001",
+  "title": "Special Procedures Requiring Clinical Review",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "special_procedures",
+  "procedure_codes": [
+    "PRC-210",
+    "PRC-220"
+  ],
+  "diagnosis_prefixes": [
+    "M",
+    "C",
+    "D"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-06-01",
+  "text": "Lumbar spinal fusion surgery (PRC-210) and experimental infusion therapy (PRC-220) are special procedures. They are always reviewed by a clinician before payment, regardless of the amount billed or the quality of the documentation.\n\nThe reviewer confirms medical necessity, prior conservative treatment, and for experimental therapies the trial or protocol eligibility. Automated systems must not approve or reject these claims."
+}

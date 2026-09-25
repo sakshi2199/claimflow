@@ -27,6 +27,7 @@ class EvalRecord:
     actual_reason: str | None
     workflow_succeeded: bool
     latency_ms: float
+    details: dict[str, Any] | None = None  # WorkflowRun.details (Phase 2 trace)
 
     @property
     def correct(self) -> bool:

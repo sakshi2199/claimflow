@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-AMB-002",
+  "title": "Resolved Uncertainty and Negated Hedging Language",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "ambiguity_handling",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-07-01",
+  "text": "Words that express doubt, such as possible, suspected, uncertain or unclear, do not by themselves make documentation ambiguous. When the note states that uncertainty has been resolved or is absent, the documentation is considered definitive. Examples include a condition that was previously suspected and is now confirmed by testing, and an explicit statement that there is no uncertainty about the diagnosis.\n\nHedging vocabulary must be read in context. Negated or resolved hedging language supports approval when the assessment, the coded diagnosis and the service provided are otherwise consistent. Hedging language that applies to the current assessment remains ambiguous under the ambiguous documentation policy."
+}

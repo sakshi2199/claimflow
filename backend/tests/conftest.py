@@ -85,3 +85,45 @@ def saved_claim(db: Session):
         return claim
 
     return _save
+
+
+# ---- Phase 2 fixtures ---------------------------------------------------------------------------------
+
+from app.rag.config import get_preset  # noqa: E402
+from app.rag.documents import load_policy_documents  # noqa: E402
+from app.rag.embeddings import HashingEmbedder  # noqa: E402
+from app.rag.retrieval import Retriever  # noqa: E402
+from app.rag.store import PolicyStore, get_client  # noqa: E402
+from app.services.interpretation import NotesInterpreter  # noqa: E402
+
+
+@pytest.fixture(scope="session")
+def policy_documents():
+    return load_policy_documents()
+
+
+@pytest.fixture(scope="session")
+def hashing_store(tmp_path_factory, policy_documents) -> PolicyStore:
+    """Chroma store on the offline hashing embedder, with every retrieval preset ingested once per test session."""
+    from app.rag.config import PRESETS
+
+    store = PolicyStore(get_client(tmp_path_factory.mktemp("chroma")), HashingEmbedder())
+    for config in PRESETS.values():
+        store.ingest(policy_documents, config)
+    return store
+
+
+@pytest.fixture()
+def retriever(hashing_store, policy_documents) -> Retriever:
+    return Retriever(hashing_store, get_preset("filtered"), policy_documents)
+
+
+@pytest.fixture()
+def make_interpreter(retriever):
+    def _make(provider, threshold: float = 0.8, max_retries: int = 2, use_retriever=None) -> NotesInterpreter:
+        return NotesInterpreter(
+            use_retriever or retriever, provider, threshold=threshold, timeout=5.0,
+            max_retries=max_retries, max_output_tokens=500, backoff_seconds=0.0, sleep=lambda _s: None,
+        )  # fmt: skip
+
+    return _make

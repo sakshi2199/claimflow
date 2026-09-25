@@ -1,0 +1,18 @@
+{
+  "policy_id": "POL-IMG-001",
+  "title": "Diagnostic Imaging: Chest Radiography and Echocardiography",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-120",
+    "PRC-180"
+  ],
+  "diagnosis_prefixes": [
+    "J",
+    "R",
+    "I"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-03-01",
+  "text": "Chest X-ray with two views (PRC-120) and transthoracic echocardiogram (PRC-180) are covered when ordered to evaluate documented respiratory or cardiovascular signs or symptoms. Documentation must include the clinical indication, the study that was performed, and the ordering clinician's interpretation or plan.\n\nEchocardiography requires a cardiovascular or chest symptom diagnosis. Chest radiography is compatible with respiratory, chest symptom, and cardiovascular diagnoses. Studies ordered without a documented indication are routed to review."
+}

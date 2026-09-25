@@ -1,0 +1,175 @@
+{
+  "label": "retrieval-filtered",
+  "retrieval_config": {
+    "name": "filtered",
+    "description": "Query preset + metadata filter: policies for the claim's procedure code plus cross-cutting policies",
+    "chunk_size": 400,
+    "chunk_overlap": 80,
+    "include_title": true,
+    "query_mode": "structured",
+    "metadata_filter": true,
+    "fetch_chunks": 20,
+    "context_policies": 5
+  },
+  "embedder": "all-MiniLM-L6-v2-onnx",
+  "dataset": {
+    "name": "claims_benchmark_v1.jsonl",
+    "sha256": "96e8b319928021e7403a4ed9725cb98ee7beb5306cf035169877526d62b3d538"
+  },
+  "labels_file": "claims_benchmark_v1.policy_labels.jsonl",
+  "retrieval": {
+    "queries": 94,
+    "recall_at_k": {
+      "1": 0.5,
+      "3": 0.7340425531914894,
+      "5": 0.9468085106382979
+    },
+    "hit_rate_at_k": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0
+    },
+    "mrr": 1.0,
+    "latency_ms": {
+      "mean": 24.39653616973838,
+      "median": 23.179499999969266,
+      "p95": 31.715300006908365
+    },
+    "by_category": {
+      "ambiguous_notes_explicit": {
+        "queries": 10,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.9,
+          "5": 1.0
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "ambiguous_notes_subtle": {
+        "queries": 8,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.8125,
+          "5": 1.0
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "negated_ambiguity": {
+        "queries": 8,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.5625,
+          "5": 0.75
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "normal_valid": {
+        "queries": 22,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.6363636363636364,
+          "5": 0.9318181818181818
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "similar_but_distinct": {
+        "queries": 10,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.7,
+          "5": 0.95
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "valid_routine": {
+        "queries": 36,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.7777777777777778,
+          "5": 0.9722222222222222
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      }
+    },
+    "by_relevant_policy": {
+      "POL-AMB-001": {
+        "expected": 18,
+        "found_in_top_5": 18
+      },
+      "POL-AMB-002": {
+        "expected": 8,
+        "found_in_top_5": 4
+      },
+      "POL-DM-001": {
+        "expected": 8,
+        "found_in_top_5": 8
+      },
+      "POL-DOC-001": {
+        "expected": 68,
+        "found_in_top_5": 62
+      },
+      "POL-EM-001": {
+        "expected": 33,
+        "found_in_top_5": 33
+      },
+      "POL-IMG-001": {
+        "expected": 5,
+        "found_in_top_5": 5
+      },
+      "POL-IMG-002": {
+        "expected": 1,
+        "found_in_top_5": 1
+      },
+      "POL-LAB-001": {
+        "expected": 25,
+        "found_in_top_5": 25
+      },
+      "POL-OB-001": {
+        "expected": 8,
+        "found_in_top_5": 8
+      },
+      "POL-PREV-001": {
+        "expected": 8,
+        "found_in_top_5": 8
+      },
+      "POL-PT-001": {
+        "expected": 3,
+        "found_in_top_5": 3
+      },
+      "POL-SCR-001": {
+        "expected": 3,
+        "found_in_top_5": 3
+      }
+    }
+  }
+}

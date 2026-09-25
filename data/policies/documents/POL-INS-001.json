@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-INS-001",
+  "title": "Insufficient or Placeholder Documentation",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "documentation",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-01-01",
+  "text": "Notes that are empty, or that consist only of placeholders such as references to attached records, not-applicable markers, or statements that documentation is pending, do not support a claim. These claims are routed to a reviewer who requests the missing records from the provider.\n\nShort notes that do not contain a reason for the encounter, an assessment and a plan are treated as insufficient."
+}

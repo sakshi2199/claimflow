@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-AMB-001",
+  "title": "Ambiguous, Conflicting or Unresolved Clinical Documentation",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "ambiguity_handling",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-07-01",
+  "text": "Clinical notes must state the clinician's assessment with enough certainty to support the billed diagnosis and service. Notes are treated as ambiguous when they describe the diagnosis as unconfirmed, provisional, or pending further testing; when they list several candidate conditions without selecting one; when they defer the diagnostic decision to future work-up or follow-up; or when they describe findings that do not point clearly to the coded diagnosis.\n\nClaims with ambiguous documentation must not be approved automatically. They are routed to a human reviewer, who may request an addendum from the provider. Ambiguity is a property of the documentation as a whole, not of any single word."
+}

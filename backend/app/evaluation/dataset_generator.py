@@ -21,7 +21,9 @@ from pathlib import Path
 from typing import Any
 
 from app.core.config import get_settings
+from app.evaluation.policy_labels import write_policy_labels
 from app.models.enums import ClaimOutcome, ReasonCode
+from app.rag.documents import load_policy_documents
 from app.services.policies import PolicyData, Procedure, load_policies
 
 DEFAULT_SEED = 42
@@ -443,7 +445,9 @@ def main(argv: list[str] | None = None) -> int:
 
     claims = generate_claims(args.seed)
     manifest = write_dataset(claims, args.output, args.seed)
+    labels_path = write_policy_labels(claims, load_policy_documents(), args.output)
     print(f"Wrote {manifest['total_claims']} claims to {args.output} (seed={args.seed})")
+    print(f"Wrote retrieval ground-truth labels to {labels_path}")
     print(f"Outcome distribution: {manifest['outcome_distribution']}")
     return 0
 

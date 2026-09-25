@@ -1,0 +1,175 @@
+{
+  "label": "retrieval-query",
+  "retrieval_config": {
+    "name": "query",
+    "description": "Chunking preset + query built from the procedure description and the clinical notes",
+    "chunk_size": 400,
+    "chunk_overlap": 80,
+    "include_title": true,
+    "query_mode": "structured",
+    "metadata_filter": false,
+    "fetch_chunks": 20,
+    "context_policies": 5
+  },
+  "embedder": "all-MiniLM-L6-v2-onnx",
+  "dataset": {
+    "name": "claims_benchmark_v1.jsonl",
+    "sha256": "96e8b319928021e7403a4ed9725cb98ee7beb5306cf035169877526d62b3d538"
+  },
+  "labels_file": "claims_benchmark_v1.policy_labels.jsonl",
+  "retrieval": {
+    "queries": 94,
+    "recall_at_k": {
+      "1": 0.5,
+      "3": 0.574468085106383,
+      "5": 0.6968085106382979
+    },
+    "hit_rate_at_k": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0
+    },
+    "mrr": 1.0,
+    "latency_ms": {
+      "mean": 25.094643618355438,
+      "median": 23.7577500010957,
+      "p95": 34.70340000058059
+    },
+    "by_category": {
+      "ambiguous_notes_explicit": {
+        "queries": 10,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.65,
+          "5": 0.9
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "ambiguous_notes_subtle": {
+        "queries": 8,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.6875,
+          "5": 0.9375
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "negated_ambiguity": {
+        "queries": 8,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.5625,
+          "5": 0.5625
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "normal_valid": {
+        "queries": 22,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.5454545454545454,
+          "5": 0.5909090909090909
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "similar_but_distinct": {
+        "queries": 10,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.5,
+          "5": 0.6
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      },
+      "valid_routine": {
+        "queries": 36,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 0.5694444444444444,
+          "5": 0.7083333333333334
+        },
+        "hit_rate_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "mrr": 1.0
+      }
+    },
+    "by_relevant_policy": {
+      "POL-AMB-001": {
+        "expected": 18,
+        "found_in_top_5": 15
+      },
+      "POL-AMB-002": {
+        "expected": 8,
+        "found_in_top_5": 1
+      },
+      "POL-DM-001": {
+        "expected": 8,
+        "found_in_top_5": 8
+      },
+      "POL-DOC-001": {
+        "expected": 68,
+        "found_in_top_5": 21
+      },
+      "POL-EM-001": {
+        "expected": 33,
+        "found_in_top_5": 33
+      },
+      "POL-IMG-001": {
+        "expected": 5,
+        "found_in_top_5": 5
+      },
+      "POL-IMG-002": {
+        "expected": 1,
+        "found_in_top_5": 1
+      },
+      "POL-LAB-001": {
+        "expected": 25,
+        "found_in_top_5": 25
+      },
+      "POL-OB-001": {
+        "expected": 8,
+        "found_in_top_5": 8
+      },
+      "POL-PREV-001": {
+        "expected": 8,
+        "found_in_top_5": 8
+      },
+      "POL-PT-001": {
+        "expected": 3,
+        "found_in_top_5": 3
+      },
+      "POL-SCR-001": {
+        "expected": 3,
+        "found_in_top_5": 3
+      }
+    }
+  }
+}

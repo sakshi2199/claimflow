@@ -11,6 +11,7 @@ class ProcessingStatus(StrEnum):
     RECEIVED = "RECEIVED"
     VALIDATING = "VALIDATING"
     RULE_CHECK = "RULE_CHECK"
+    INTERPRETING = "INTERPRETING"  # Phase 2: RAG + LLM reading of clinical notes
     COMPLETED = "COMPLETED"
     FAILED = "FAILED"
 
@@ -37,5 +38,8 @@ class ReasonCode(StrEnum):
     AMBIGUOUS_CLINICAL_NOTES = "AMBIGUOUS_CLINICAL_NOTES"
     # Approval
     VALID_STANDARD_CLAIM = "VALID_STANDARD_CLAIM"
+    # Phase 2 escalations to a human
+    LLM_LOW_CONFIDENCE = "LLM_LOW_CONFIDENCE"
+    LLM_PROCESSING_FALLBACK = "LLM_PROCESSING_FALLBACK"
     # Workflow failure
     PROCESSING_ERROR = "PROCESSING_ERROR"

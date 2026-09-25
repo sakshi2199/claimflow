@@ -1,0 +1,16 @@
+{
+  "policy_id": "POL-OB-001",
+  "title": "Prenatal Care Visits",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-310"
+  ],
+  "diagnosis_prefixes": [
+    "O",
+    "Z"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-05-01",
+  "text": "Prenatal care visits (PRC-310) are covered for members who are pregnant and must be billed with a pregnancy-related or supervision-of-pregnancy diagnosis. Documentation should include gestational information, a review of maternal concerns, and the plan for the next visit.\n\nSupervision of a high-risk pregnancy is covered at the same visit rate and does not by itself require review."
+}

@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-DX-001",
+  "title": "Consistency Between Narrative and Coded Diagnosis",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "documentation",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-07-01",
+  "text": "The diagnosis code on a claim must be supported by the clinical narrative. A claim has a diagnosis consistency problem when the narrative describes findings that fit a different condition than the one coded, when the narrative does not identify the coded condition, or when the narrative asks that the coding be revisited or confirmed.\n\nSuch claims are not approved automatically. They are sent to a human coding reviewer who may query the provider. A narrative that names the coded condition and describes findings consistent with it is considered consistent."
+}

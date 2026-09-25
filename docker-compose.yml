@@ -23,8 +23,13 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
+    # Optional .env supplies LLM_PROVIDER, LLM_MODEL, ANTHROPIC_API_KEY, ... (see .env.example).
+    env_file:
+      - path: .env
+        required: false
     environment:
       DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-claimflow}:${POSTGRES_PASSWORD:-claimflow}@db:5432/${POSTGRES_DB:-claimflow}
+      CHROMA_DIR: /srv/chroma_db
     depends_on:
       db:
         condition: service_healthy
@@ -34,6 +39,8 @@ services:
       # Generated benchmark files and evaluation reports appear on the host.
       - ./data:/srv/data
       - ./evaluation_results:/srv/evaluation_results
+      - chroma_data:/srv/chroma_db
 
 volumes:
   postgres_data:
+  chroma_data:

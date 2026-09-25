@@ -1,0 +1,16 @@
+{
+  "policy_id": "POL-SCR-001",
+  "title": "Screening Colonoscopy",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-170"
+  ],
+  "diagnosis_prefixes": [
+    "K",
+    "Z"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-04-01",
+  "text": "Screening colonoscopy (PRC-170) is covered for members who meet age or risk criteria and for evaluation of gastrointestinal symptoms. Documentation must include the indication, the findings of the procedure, and the follow-up plan.\n\nThe procedure must be billed with a gastrointestinal or screening diagnosis. Because of the higher cost of the procedure, claims above the auto-approval limit are sent to review."
+}

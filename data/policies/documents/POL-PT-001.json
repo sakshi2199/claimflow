@@ -1,0 +1,16 @@
+{
+  "policy_id": "POL-PT-001",
+  "title": "Physical Therapy Sessions",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "procedure_coverage",
+  "procedure_codes": [
+    "PRC-150"
+  ],
+  "diagnosis_prefixes": [
+    "M",
+    "S"
+  ],
+  "applies_to_all": false,
+  "effective_date": "2024-02-01",
+  "text": "Physical therapy sessions (PRC-150) are covered for musculoskeletal conditions and injuries. Each session note should describe the treatment performed, the patient's functional limitation, progress since the previous session, and the expected duration of therapy.\n\nSessions billed with diagnoses outside the musculoskeletal and injury categories are not payable. Sessions on separate dates of service for the same patient are expected within a course of therapy and are not duplicates."
+}

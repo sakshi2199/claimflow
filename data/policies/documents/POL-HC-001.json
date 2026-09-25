@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-HC-001",
+  "title": "High-Cost Claim Review",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "high_cost_review",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-01-01",
+  "text": "Each procedure has an auto-approval limit. A claim whose amount exceeds the limit for its procedure is not decided automatically and is sent to a reviewer, who checks that the amount matches the service documented. A claim at or below the limit is not high-cost.\n\nA claim that is both incompatible with its diagnosis and above the limit is rejected for incompatibility first."
+}

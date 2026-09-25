@@ -11,12 +11,16 @@ from typing import Any
 
 from sqlalchemy.orm import Session
 
-from app.core.config import ENGINE_VERSION
+from app.core.config import ENGINE_VERSION, ENGINE_VERSION_RAG_LLM
 from app.db.base import utcnow
 from app.evaluation.metrics import EvalRecord, compute_metrics
+from app.evaluation.phase2_metrics import compute_phase2_metrics
+from app.evaluation.policy_labels import labels_path_for, load_policy_labels
+from app.evaluation.thresholds import DEFAULT_THRESHOLDS, threshold_table
 from app.models.claim import Claim
 from app.models.enums import ClaimOutcome, ProcessingStatus
 from app.models.evaluation_run import EvaluationRun
+from app.services.interpretation import NotesInterpreter
 from app.services.workflow import process_claim
 
 REQUIRED_FIELDS = ("claim_number", "patient_id", "provider_id", "claim_amount", "submission_date", "category", "expected_outcome")
@@ -65,11 +69,22 @@ def _claim_from_row(row: dict[str, Any], evaluation_run_id: int) -> Claim:
     )
 
 
-def run_evaluation(db: Session, dataset_path: Path, label: str = DEFAULT_LABEL) -> EvaluationRun:
+def run_evaluation(
+    db: Session,
+    dataset_path: Path,
+    label: str = DEFAULT_LABEL,
+    interpreter: NotesInterpreter | None = None,
+    thresholds: tuple[float, ...] = DEFAULT_THRESHOLDS,
+    input_price: float | None = None,
+    output_price: float | None = None,
+) -> EvaluationRun:
+    """Run the benchmark through the real workflow. Without an interpreter this is the Phase 1 baseline;
+    with one, the same benchmark runs through the Phase 2 RAG + LLM workflow and extra sections are reported."""
     rows, sha256 = load_dataset(dataset_path)
+    engine_version = ENGINE_VERSION_RAG_LLM if interpreter else ENGINE_VERSION
     evaluation = EvaluationRun(
         label=label,
-        engine_version=ENGINE_VERSION,
+        engine_version=engine_version,
         dataset_name=dataset_path.name,
         dataset_sha256=sha256,
         total_claims=len(rows),
@@ -85,7 +100,7 @@ def run_evaluation(db: Session, dataset_path: Path, label: str = DEFAULT_LABEL) 
             claim = _claim_from_row(row, evaluation.id)
             db.add(claim)
             db.commit()  # commit first so a workflow failure cannot roll the claim back
-            run = process_claim(db, claim)
+            run = process_claim(db, claim, interpreter)
             records.append(
                 EvalRecord(
                     claim_number=claim.claim_number,
@@ -96,13 +111,27 @@ def run_evaluation(db: Session, dataset_path: Path, label: str = DEFAULT_LABEL) 
                     actual_reason=run.decision_reason.value if run.decision_reason else None,
                     workflow_succeeded=run.current_state == ProcessingStatus.COMPLETED,
                     latency_ms=run.latency_ms,
+                    details=run.details,
                 )
             )
 
         report = compute_metrics(records)
         report["label"] = label
-        report["engine_version"] = ENGINE_VERSION
+        report["engine_version"] = engine_version
         report["dataset"] = {"name": dataset_path.name, "sha256": sha256}
+        if interpreter is not None:
+            labels_path = labels_path_for(dataset_path)
+            labels = load_policy_labels(labels_path) if labels_path.exists() else None
+            report["phase2"] = compute_phase2_metrics(records, labels, input_price, output_price)
+            report["threshold_analysis"] = threshold_table(records, thresholds)
+            report["retrieval_config"] = interpreter.retriever.config.to_dict()
+            report["llm"] = {
+                "provider": interpreter.provider.name,
+                "model": interpreter.provider.model,
+                "confidence_threshold": interpreter.threshold,
+                "max_retries": interpreter.max_retries,
+                "timeout_seconds": interpreter.timeout,
+            }
     except Exception:
         db.rollback()
         evaluation.status = "FAILED"

@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-DXPX-001",
+  "title": "Diagnosis and Procedure Compatibility",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "diagnosis_procedure",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-01-01",
+  "text": "Every procedure in the plan's procedure catalog is compatible only with specified diagnosis categories. A claim whose diagnosis category is not on the compatible list for the billed procedure is rejected for diagnosis and procedure mismatch. For example, imaging of the knee is compatible with musculoskeletal and injury diagnoses but not with respiratory diagnoses.\n\nCompatibility is determined from the first letter of the diagnosis code. Documentation quality does not override an incompatibility."
+}

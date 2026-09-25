@@ -1,0 +1,11 @@
+{
+  "policy_id": "POL-DUP-001",
+  "title": "Duplicate and Resubmitted Claims",
+  "payer": "Northwind Health Plan (fictional)",
+  "category": "duplicate_claims",
+  "procedure_codes": [],
+  "diagnosis_prefixes": [],
+  "applies_to_all": true,
+  "effective_date": "2024-01-01",
+  "text": "A claim is a duplicate when the same patient, provider, procedure and date of service were already submitted on an earlier claim, even under a different claim number. Duplicates are rejected.\n\nA claim for the same patient, provider and procedure on a different date of service is a separate encounter and is not a duplicate."
+}
