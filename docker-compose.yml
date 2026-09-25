@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-claimflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-claimflow} # local-dev default only; override in .env
+      POSTGRES_DB: ${POSTGRES_DB:-claimflow}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-claimflow} -d ${POSTGRES_DB:-claimflow}",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-claimflow}:${POSTGRES_PASSWORD:-claimflow}@db:5432/${POSTGRES_DB:-claimflow}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      # Generated benchmark files and evaluation reports appear on the host.
+      - ./data:/srv/data
+      - ./evaluation_results:/srv/evaluation_results
+
+volumes:
+  postgres_data:

@@ -1,0 +1,118 @@
+{
+  "version": "1",
+  "note": "Fictional procedure catalog for the ClaimFlow benchmark. Codes and rules are synthetic and are NOT real CPT/ICD/payer policy.",
+  "procedures": [
+    {
+      "code": "PRC-101",
+      "description": "office visit, low complexity",
+      "typical_amount_range": [60, 180],
+      "max_auto_amount": 250,
+      "allowed_diagnosis_prefixes": ["J", "R", "K", "M", "L", "Z", "E", "I", "N", "S"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-102",
+      "description": "office visit, moderate complexity",
+      "typical_amount_range": [120, 300],
+      "max_auto_amount": 400,
+      "allowed_diagnosis_prefixes": ["J", "R", "K", "M", "L", "Z", "E", "I", "N", "S"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-110",
+      "description": "annual preventive examination",
+      "typical_amount_range": [100, 220],
+      "max_auto_amount": 350,
+      "allowed_diagnosis_prefixes": ["Z"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-120",
+      "description": "chest X-ray, two views",
+      "typical_amount_range": [70, 200],
+      "max_auto_amount": 400,
+      "allowed_diagnosis_prefixes": ["J", "R", "I"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-130",
+      "description": "comprehensive metabolic panel",
+      "typical_amount_range": [30, 90],
+      "max_auto_amount": 200,
+      "allowed_diagnosis_prefixes": ["E", "K", "N", "I", "Z"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-140",
+      "description": "lipid panel",
+      "typical_amount_range": [30, 80],
+      "max_auto_amount": 150,
+      "allowed_diagnosis_prefixes": ["E", "I", "Z"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-150",
+      "description": "physical therapy session",
+      "typical_amount_range": [90, 200],
+      "max_auto_amount": 300,
+      "allowed_diagnosis_prefixes": ["M", "S"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-160",
+      "description": "knee MRI without contrast",
+      "typical_amount_range": [600, 1100],
+      "max_auto_amount": 1500,
+      "allowed_diagnosis_prefixes": ["M", "S"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-170",
+      "description": "screening colonoscopy",
+      "typical_amount_range": [1000, 2000],
+      "max_auto_amount": 3000,
+      "allowed_diagnosis_prefixes": ["K", "Z"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-180",
+      "description": "transthoracic echocardiogram",
+      "typical_amount_range": [500, 1100],
+      "max_auto_amount": 1800,
+      "allowed_diagnosis_prefixes": ["I", "R"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-190",
+      "description": "diabetes self-management education session",
+      "typical_amount_range": [60, 150],
+      "max_auto_amount": 250,
+      "allowed_diagnosis_prefixes": ["E"],
+      "requires_manual_review": false
+    },
+    {
+      "code": "PRC-210",
+      "description": "lumbar spinal fusion surgery",
+      "typical_amount_range": [18000, 30000],
+      "max_auto_amount": 35000,
+      "allowed_diagnosis_prefixes": ["M"],
+      "requires_manual_review": true
+    },
+    {
+      "code": "PRC-220",
+      "description": "experimental infusion therapy",
+      "typical_amount_range": [8000, 15000],
+      "max_auto_amount": 20000,
+      "allowed_diagnosis_prefixes": ["C", "D"],
+      "requires_manual_review": true
+    },
+    {
+      "code": "PRC-310",
+      "description": "prenatal care visit",
+      "typical_amount_range": [100, 250],
+      "max_auto_amount": 400,
+      "allowed_diagnosis_prefixes": ["O", "Z"],
+      "requires_manual_review": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "dataset": "claims_benchmark_v1.jsonl",
+  "seed": 42,
+  "total_claims": 200,
+  "sha256": "96e8b319928021e7403a4ed9725cb98ee7beb5306cf035169877526d62b3d538",
+  "outcome_distribution": {
+    "REJECTED": 74,
+    "HUMAN_REVIEW": 50,
+    "APPROVED": 76
+  },
+  "categories": {
+    "valid_routine": {
+      "count": 36,
+      "expected_outcome": "APPROVED"
+    },
+    "normal_valid": {
+      "count": 22,
+      "expected_outcome": "APPROVED"
+    },
+    "similar_but_distinct": {
+      "count": 10,
+      "expected_outcome": "APPROVED"
+    },
+    "negated_ambiguity": {
+      "count": 8,
+      "expected_outcome": "APPROVED"
+    },
+    "duplicate_claim": {
+      "count": 15,
+      "expected_outcome": "REJECTED"
+    },
+    "malformed_claim_number": {
+      "count": 12,
+      "expected_outcome": "REJECTED"
+    },
+    "missing_procedure_code": {
+      "count": 10,
+      "expected_outcome": "REJECTED"
+    },
+    "missing_diagnosis_code": {
+      "count": 10,
+      "expected_outcome": "REJECTED"
+    },
+    "invalid_amount": {
+      "count": 12,
+      "expected_outcome": "REJECTED"
+    },
+    "diagnosis_procedure_mismatch": {
+      "count": 15,
+      "expected_outcome": "REJECTED"
+    },
+    "high_cost": {
+      "count": 12,
+      "expected_outcome": "HUMAN_REVIEW"
+    },
+    "ambiguous_notes_explicit": {
+      "count": 10,
+      "expected_outcome": "HUMAN_REVIEW"
+    },
+    "ambiguous_notes_subtle": {
+      "count": 8,
+      "expected_outcome": "HUMAN_REVIEW"
+    },
+    "incomplete_supporting_info": {
+      "count": 10,
+      "expected_outcome": "HUMAN_REVIEW"
+    },
+    "policy_review": {
+      "count": 10,
+      "expected_outcome": "HUMAN_REVIEW"
+    }
+  }
+}

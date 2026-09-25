@@ -1,0 +1,5 @@
+{
+  "version": "1",
+  "note": "Fictional providers flagged for manual review of every claim.",
+  "providers": ["PRV-9001", "PRV-9002", "PRV-9003"]
+}

@@ -1,0 +1,308 @@
+{
+  "summary": {
+    "total_claims": 200,
+    "correct_decisions": 184,
+    "accuracy": 0.92,
+    "automation_rate": 0.75,
+    "human_review_rate": 0.25,
+    "workflow_success_rate": 1.0,
+    "workflow_failure_rate": 0.0,
+    "automated_decision_accuracy": 0.9466666666666667,
+    "false_approval_count": 8,
+    "reason_code_accuracy": 0.92
+  },
+  "latency_ms": {
+    "mean": 1.01167649962008,
+    "median": 0.8940499974414706,
+    "p95": 1.6773000024841167,
+    "min": 0.33969999640248716,
+    "max": 5.191199998080265
+  },
+  "per_class": {
+    "APPROVED": {
+      "precision": 0.8947368421052632,
+      "recall": 0.8947368421052632,
+      "f1": 0.8947368421052632,
+      "support": 76,
+      "true_positives": 68,
+      "false_positives": 8,
+      "false_negatives": 8
+    },
+    "REJECTED": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 74,
+      "true_positives": 74,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    "HUMAN_REVIEW": {
+      "precision": 0.84,
+      "recall": 0.84,
+      "f1": 0.8399999999999999,
+      "support": 50,
+      "true_positives": 42,
+      "false_positives": 8,
+      "false_negatives": 8
+    }
+  },
+  "by_category": {
+    "ambiguous_notes_explicit": {
+      "expected_outcome": "HUMAN_REVIEW",
+      "total": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "ambiguous_notes_subtle": {
+      "expected_outcome": "HUMAN_REVIEW",
+      "total": 8,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "diagnosis_procedure_mismatch": {
+      "expected_outcome": "REJECTED",
+      "total": 15,
+      "correct": 15,
+      "accuracy": 1.0
+    },
+    "duplicate_claim": {
+      "expected_outcome": "REJECTED",
+      "total": 15,
+      "correct": 15,
+      "accuracy": 1.0
+    },
+    "high_cost": {
+      "expected_outcome": "HUMAN_REVIEW",
+      "total": 12,
+      "correct": 12,
+      "accuracy": 1.0
+    },
+    "incomplete_supporting_info": {
+      "expected_outcome": "HUMAN_REVIEW",
+      "total": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "invalid_amount": {
+      "expected_outcome": "REJECTED",
+      "total": 12,
+      "correct": 12,
+      "accuracy": 1.0
+    },
+    "malformed_claim_number": {
+      "expected_outcome": "REJECTED",
+      "total": 12,
+      "correct": 12,
+      "accuracy": 1.0
+    },
+    "missing_diagnosis_code": {
+      "expected_outcome": "REJECTED",
+      "total": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "missing_procedure_code": {
+      "expected_outcome": "REJECTED",
+      "total": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "negated_ambiguity": {
+      "expected_outcome": "APPROVED",
+      "total": 8,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "normal_valid": {
+      "expected_outcome": "APPROVED",
+      "total": 22,
+      "correct": 22,
+      "accuracy": 1.0
+    },
+    "policy_review": {
+      "expected_outcome": "HUMAN_REVIEW",
+      "total": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "similar_but_distinct": {
+      "expected_outcome": "APPROVED",
+      "total": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "valid_routine": {
+      "expected_outcome": "APPROVED",
+      "total": 36,
+      "correct": 36,
+      "accuracy": 1.0
+    }
+  },
+  "confusion_matrix": {
+    "rows": "expected",
+    "columns": "predicted",
+    "labels": [
+      "APPROVED",
+      "REJECTED",
+      "HUMAN_REVIEW",
+      "NO_DECISION"
+    ],
+    "matrix": {
+      "APPROVED": {
+        "APPROVED": 68,
+        "REJECTED": 0,
+        "HUMAN_REVIEW": 8,
+        "NO_DECISION": 0
+      },
+      "REJECTED": {
+        "APPROVED": 0,
+        "REJECTED": 74,
+        "HUMAN_REVIEW": 0,
+        "NO_DECISION": 0
+      },
+      "HUMAN_REVIEW": {
+        "APPROVED": 8,
+        "REJECTED": 0,
+        "HUMAN_REVIEW": 42,
+        "NO_DECISION": 0
+      }
+    }
+  },
+  "misclassified": [
+    {
+      "claim_number": "CLM-2025-100050",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    },
+    {
+      "claim_number": "CLM-2025-100068",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    },
+    {
+      "claim_number": "CLM-2025-100070",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100081",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100098",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    },
+    {
+      "claim_number": "CLM-2025-100106",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    },
+    {
+      "claim_number": "CLM-2025-100108",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100120",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100133",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100134",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    },
+    {
+      "claim_number": "CLM-2025-100151",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100159",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100164",
+      "category": "ambiguous_notes_subtle",
+      "expected_outcome": "HUMAN_REVIEW",
+      "actual_outcome": "APPROVED",
+      "expected_reason": "AMBIGUOUS_CLINICAL_NOTES",
+      "actual_reason": "VALID_STANDARD_CLAIM"
+    },
+    {
+      "claim_number": "CLM-2025-100171",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    },
+    {
+      "claim_number": "CLM-2025-100176",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    },
+    {
+      "claim_number": "CLM-2025-100188",
+      "category": "negated_ambiguity",
+      "expected_outcome": "APPROVED",
+      "actual_outcome": "HUMAN_REVIEW",
+      "expected_reason": "VALID_STANDARD_CLAIM",
+      "actual_reason": "AMBIGUOUS_CLINICAL_NOTES"
+    }
+  ],
+  "label": "baseline-deterministic",
+  "engine_version": "rules-v1",
+  "dataset": {
+    "name": "claims_benchmark_v1.jsonl",
+    "sha256": "96e8b319928021e7403a4ed9725cb98ee7beb5306cf035169877526d62b3d538"
+  }
+}

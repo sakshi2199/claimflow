@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Secrets / local config
+.env
+
+# Local databases and scratch output
+*.db
+*.sqlite3
+
+# Evaluation reports: keep the committed baseline, ignore ad-hoc runs
+evaluation_results/*_run*.json
+
+# Frontend (later)
+node_modules/
+dist/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
